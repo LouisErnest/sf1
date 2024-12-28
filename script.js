@@ -67,3 +67,15 @@ document.addEventListener('DOMContentLoaded', function() {
         updateActiveElements(currentIndex);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.querySelector('.control__video-overlay');
+    overlay.addEventListener('click', playVideo);
+});
+
+function playVideo() {
+    const video = document.querySelector('.control__video-player');
+    const overlay = document.querySelector('.control__video-overlay');
+    video.play();
+    overlay.style.display = 'none';
+}
