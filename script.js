@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const headerNav = document.querySelector('.header__nav');
     const projectsLinks = document.querySelectorAll('.projects__link');
     const projectsImage = document.querySelector('.projects__image');
-    const indicators = document.querySelectorAll('.projects__ind');
-    const leftArrow = document.querySelector('.projects__left-arrow');
-    const rightArrow = document.querySelector('.projects__right-arrow');
+    const projectsIndicators = document.querySelectorAll('.projects__ind');
+    const leftProjectsArrow = document.querySelector('.projects__left-arrow');
+    const rightProjectsArrow = document.querySelector('.projects__right-arrow');
+    const leftProjectsButton = document.querySelector('.projects__img-btn-left');
+    const rightProjectsButton = document.querySelector('.projects__img-btn-right');
 
     let currentIndex = 0;
 
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Обновляем индикаторы
-        indicators.forEach((indicator, i) => {
+        projectsIndicators.forEach((indicator, i) => {
             if (i === index) {
                 indicator.classList.add('projects_active');
             } else {
@@ -57,12 +59,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    leftArrow.addEventListener('click', function() {
+    leftProjectsArrow.addEventListener('click', function() {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : projectsLinks.length - 1;
         updateActiveElements(currentIndex);
     });
 
-    rightArrow.addEventListener('click', function() {
+    rightProjectsArrow.addEventListener('click', function() {
+        currentIndex = (currentIndex < projectsLinks.length - 1) ? currentIndex + 1 : 0;
+        updateActiveElements(currentIndex);
+    });
+
+    leftProjectsButton.addEventListener('click', function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : projectsLinks.length - 1;
+        updateActiveElements(currentIndex);
+    });
+
+    rightProjectsButton.addEventListener('click', function() {
         currentIndex = (currentIndex < projectsLinks.length - 1) ? currentIndex + 1 : 0;
         updateActiveElements(currentIndex);
     });
